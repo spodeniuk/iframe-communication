@@ -1,12 +1,22 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+
+import { Preview } from './Preview';
+import { StoreFront } from './StoreFront';
+
 import './index.css';
-import App from './App';
+
 import reportWebVitals from './reportWebVitals';
+
+const AppCondition = () => {
+  if(window.location === window.parent.location /* && 'domain check here too. shouldn't be preview domain' */) return <StoreFront />
+
+  return <Preview />
+}
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <AppCondition />
   </React.StrictMode>,
   document.getElementById('root')
 );
